@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MouseHandler : MonoBehaviour
 {
+
+    public GameMaster gameMaster;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,8 @@ public class MouseHandler : MonoBehaviour
                     Destroy(hit.collider.gameObject);
                 }
                 if (hit.collider.name == "Question"){
-                    // TODO: Add coin 
+                    // TODO: Add coin
+                    gameMaster.getCoin();
                 }
 
             }
