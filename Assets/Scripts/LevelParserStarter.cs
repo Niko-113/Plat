@@ -68,6 +68,7 @@ public class LevelParserStarter : MonoBehaviour
 
         ToSpawn = GameObject.Instantiate(ToSpawn, parentTransform);
         ToSpawn.transform.localPosition = positionToSpawn;
+        ToSpawn.transform.Rotate(new Vector3(0, 180, 0));
     }
 
     public void RefreshParse()
