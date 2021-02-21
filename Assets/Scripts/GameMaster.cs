@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,17 +12,21 @@ public class GameMaster : MonoBehaviour
     public Text timeText;
 
     private int coinCount = 0;
+    private DateTime startTime;
+    private TimeSpan difference;
     
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = "SCORE\n00000";
+        startTime = DateTime.Now;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        DateTime currentTime = DateTime.Now;
+        difference = (startTime - currentTime);
+        timeText.text = ("TIME" + "\n " + (400 + difference.Seconds));
     }
 
     public void getCoin(){
