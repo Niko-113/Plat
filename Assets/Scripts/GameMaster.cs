@@ -26,7 +26,10 @@ public class GameMaster : MonoBehaviour
     {
         DateTime currentTime = DateTime.Now;
         difference = (startTime - currentTime);
-        timeText.text = ("TIME" + "\n " + (400 + difference.Seconds));
+        timeText.text = ("TIME" + "\n " + (100 + difference.Seconds));
+        if(100 + difference.Seconds < 0){
+            // gameover
+        }
     }
 
     public void getCoin(){

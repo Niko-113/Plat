@@ -28,7 +28,6 @@ public class MouseHandler : MonoBehaviour
                     Destroy(hit.collider.gameObject);
                 }
                 if (hit.collider.name == "Question"){
-                    // TODO: Add coin
                     gameMaster.getCoin();
                 }
 
