@@ -9,6 +9,7 @@ public class CharController : MonoBehaviour
     private bool jump = false;
     private Rigidbody rb;
     public float jumpForce = 1;
+    private float y;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class CharController : MonoBehaviour
         // animator.SetFloat("Turbo", turbo);
         
 
-        float y = (horizontal < 0)? -90: 90; // checkback if necessary
+        if (horizontal != 0) y = (horizontal < 0)? -90: 90; // checkback if necessary
 
         Quaternion newRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, y, transform.rotation.eulerAngles.z);
 

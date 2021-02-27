@@ -10,6 +10,7 @@ public class GameMaster : MonoBehaviour
     public Text coinText;
     public Text worldText;
     public Text timeText;
+    public Text overText;
 
     public static GameMaster master;
 
@@ -17,6 +18,7 @@ public class GameMaster : MonoBehaviour
     private int score = 0;
     private DateTime startTime;
     private TimeSpan difference;
+    public GameObject player;
     
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,7 @@ public class GameMaster : MonoBehaviour
         difference = (startTime - currentTime);
         timeText.text = ("TIME" + "\n " + (100 + difference.Seconds));
         if(100 + difference.Seconds < 0){
-            // gameover
+            GameOver();
         }
     }
 
@@ -48,5 +50,14 @@ public class GameMaster : MonoBehaviour
     public void addPoints(){
         score += 100;
         scoreText.text = ("SCORE" + "\n " + score.ToString("D5"));
+    }
+
+    public void GameOver(){
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+
+        rb.constraints = new RigidbodyConstraints();
+        rb.AddForce(rb.transform.right, ForceMode.VelocityChange);
+
+        overText.text = "GAME OVER";
     }
 }
