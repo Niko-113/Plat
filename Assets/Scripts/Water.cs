@@ -16,7 +16,7 @@ public class Water : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(){
+    void OnTriggerEnter(Collider collider){
         GameMaster.master.GameOver();
     }
 }

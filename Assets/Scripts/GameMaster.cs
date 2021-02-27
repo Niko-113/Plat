@@ -16,6 +16,7 @@ public class GameMaster : MonoBehaviour
 
     private int coinCount = 0;
     private int score = 0;
+    public int time = 0;
     private DateTime startTime;
     private TimeSpan difference;
     public GameObject player;
@@ -32,8 +33,12 @@ public class GameMaster : MonoBehaviour
     {
         DateTime currentTime = DateTime.Now;
         difference = (startTime - currentTime);
-        timeText.text = ("TIME" + "\n " + (100 + difference.Seconds));
-        if(100 + difference.Seconds < 0){
+        // if (difference.Seconds == -59){
+        //     time = -60;
+        // }
+        time = (int) difference.TotalSeconds ;
+        timeText.text = ("TIME" + "\n " + (100 + time));
+        if(100 + time < 0){
             GameOver();
         }
     }
@@ -59,5 +64,10 @@ public class GameMaster : MonoBehaviour
         rb.AddForce(rb.transform.right, ForceMode.VelocityChange);
 
         overText.text = "GAME OVER";
+    }
+
+    public void Victory(){
+        overText.text = ("CONGRATULATION ! ! !");
+        overText.color = (Color.green);
     }
 }
