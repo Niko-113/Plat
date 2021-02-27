@@ -8,6 +8,7 @@ public class Question : MonoBehaviour
     
 
     float offset = 0;
+    private bool hasCoin = true;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,17 @@ public class Question : MonoBehaviour
         
         
         
+    }
+
+    void OnCollisionEnter(){
+        if (hasCoin){ 
+            GameMaster.master.getCoin();
+            GameMaster.master.addPoints();
+        }
+
+        hasCoin = false;
+        
+
     }
 
     IEnumerator Animate(){

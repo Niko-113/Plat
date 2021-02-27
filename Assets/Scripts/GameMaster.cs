@@ -11,7 +11,10 @@ public class GameMaster : MonoBehaviour
     public Text worldText;
     public Text timeText;
 
+    public static GameMaster master;
+
     private int coinCount = 0;
+    private int score = 0;
     private DateTime startTime;
     private TimeSpan difference;
     
@@ -19,6 +22,7 @@ public class GameMaster : MonoBehaviour
     void Start()
     {
         startTime = DateTime.Now;
+        master = this.GetComponent<GameMaster>();
     }
 
     // Update is called once per frame
@@ -39,5 +43,10 @@ public class GameMaster : MonoBehaviour
             coinText.text += "0";
         }
         coinText.text += coinCount;
+    }
+
+    public void addPoints(){
+        score += 100;
+        scoreText.text = ("SCORE" + "\n " + score.ToString("D5"));
     }
 }
